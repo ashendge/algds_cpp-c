@@ -2,3 +2,10 @@
 *.lo
 *.o
 *.obj
+# Ignore all
+*
+# Unignore all with extensions
+!*.*
+
+# Unignore all dirs
+!*/
