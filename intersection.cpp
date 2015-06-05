@@ -16,7 +16,7 @@ int main(){
 
 	Node *head = NULL;
 	Node *head2 = NULL;
-	add_node(&head,6);	
+	/*add_node(&head,6);	
 	add_node(&head,5);
 	add_node(&head,4);
 	add_node(&head,3);
@@ -31,7 +31,13 @@ int main(){
 	print(head2);
 
 	Node *intersect = sorted_intersection(head,head2);
-	print(intersect);
+	print(intersect);*/
+
+	head = new Node;
+
+	cout<<&head<<endl;
+	cout<<&(head->next)<<endl;
+
 	return 0;
 }
 
@@ -61,10 +67,11 @@ Node *sorted_intersection(Node *a,Node *b){
 		res_ref = &result;
 		//cout<<"test1";
 		while(a!=NULL && b!=NULL){
-		if(a->value == b->value){
+		if(a->value == b->value){	
     	   	   		   		
      		add_node(res_ref,a->value);
      		res_ref = &((*res_ref)->next);
+
      		a = a->next;
      		b = b->next;
 		}
@@ -80,12 +87,6 @@ Node *sorted_intersection(Node *a,Node *b){
 
   }
   		
-  		
-
-
-
-
-
-
+  	
 
 

@@ -32,6 +32,8 @@ int main(){
 void print(Node *head){
 
 		Node *temp = head;
+		Node **temp_ref = &temp;
+		
 		while(temp!=NULL){
 			cout<<temp->value<<" ";
 			temp = temp->next;
