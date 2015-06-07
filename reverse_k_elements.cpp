@@ -85,6 +85,21 @@ Node *reverse(Node *head, int k){
 
 void iter_reverse(Node **head_ref, int k){
 
+/******************************************************************************************************************************************************************
+ The biggest issue in this apporach is that I had to take care of 
+for a list:
+ 1->2->3->4->5->6->7->8->9->NULL
+
+after first iteration,
+3->2->1-> (when I start reversing  4->5->6 to 6->5->4->)
+
+I need to somehow link 1-> to 6 but all my previous attemts I was linking 1 to 4 and not 6. But by saving previous_end I am taking care of this issue
+at Lines 128 and 129
+
+
+******************************************************************************************************************************************************************/
+
+
 
 		Node *curr, *prev, *next;
 		Node *temp1, *previous_end = NULL;
@@ -93,6 +108,8 @@ void iter_reverse(Node **head_ref, int k){
 		curr = *head_ref;
 		prev = NULL;
 		*head_ref = NULL;
+
+
 
 		while(1){
 
