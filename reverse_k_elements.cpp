@@ -11,7 +11,7 @@ struct Node{
 void add_node(Node **, int );
 void print(Node *head);
 Node *reverse(Node *, int );
-
+void iter_reverse(Node **, int );	
 /**
 Important problem-  Its is better to take the recursive aproach than iterative one. 
 in recursion head->next = reverse() is the main step where the linking of already reversed listsis done. I somehow missed it while doing the iterative version
@@ -32,8 +32,8 @@ int main(){
 		add_node(&head,2);
 		add_node(&head,1);
 		print(head);
-		Node *temp = reverse(head,2);
-		print(temp);
+		iter_reverse(&head, 3);
+		
 		return 0;
 }
 
@@ -81,4 +81,51 @@ Node *reverse(Node *head, int k){
 		}
 		return prev;
 }
+
+
+void iter_reverse(Node **head_ref, int k){
+
+
+		Node *curr, *prev, *next;
+		Node *temp1, *previous_end = NULL;
+		
+		int count = 0;
+		curr = *head_ref;
+		prev = NULL;
+		*head_ref = NULL;
+
+		while(1){
+
+			count = k;
+			temp1 = curr;
+			prev = NULL;		
+		
+			while(curr!=NULL && count--){
+
+				next = curr->next;
+				curr->next = prev;
+				prev = curr;
+				curr = next;
+			}
+
+			if(previous_end!=NULL)
+					previous_end->next = prev;
+
+
+			if(*head_ref == NULL)
+				*head_ref = prev;
+
+
+			if(!curr)
+				break;
+
+			temp1->next = curr;
+			previous_end = temp1;
+
+		} 
+
+		print(*head_ref);
+}
+
+
 
