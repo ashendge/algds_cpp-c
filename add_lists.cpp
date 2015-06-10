@@ -56,7 +56,14 @@ void add_node(Node **head_ref, int value){
 }
 
 void add_link(Node *num1, Node *num2){
+/****************************************************
 
+In this function we add till shorter runs out. 
+
+
+
+
+*/
 	Node *sum_node = NULL;
 	Node **ref_sum;
 	ref_sum = &sum_node;
@@ -72,13 +79,11 @@ void add_link(Node *num1, Node *num2){
 
 			carry = sum_temp / 10;
 			sum_temp = sum_temp % 10;
-	//		cout<<"C="<<carry<<" S="<<sum_temp<<endl;		
 			add_node(ref_sum,sum_temp);
 			
 		}
 
 		else{
-	//		cout<<"C="<<carry<<" S="<<sum_temp<<endl;					
 			add_node(ref_sum,sum_temp);
 		}
 
@@ -88,37 +93,31 @@ void add_link(Node *num1, Node *num2){
 	}
 	
 	if(ptr1){
+/**********************************************
+	Here a flag is maintained because the carry has to  be zero if the element[ptr->value] 
+	is not 9 in the previous step
 
+*/
 			int flag = 0;	
 	
 		while(ptr1){
 				flag=0;
 				sum_temp = ptr1->value + carry;
-				//cout<<"Sum Temp= "<<sum_temp<<endl;
 
 				if(sum_temp > 9){
-
 					flag = 1;
 					carry = sum_temp / 10;
-					//cout<<"C="<<carry<<" S="<<sum_temp<<endl;					
 					sum_temp = sum_temp % 10;
 					add_node(ref_sum,sum_temp);
-
 				}
 
 				else{
-
-				//	cout<<"C="<<carry<<" S="<<sum_temp<<endl;		
 					add_node(ref_sum,sum_temp);
-
 			}
 				if(flag!=1)
 				carry =0;
-
-				cout<<"C->"<<carry<<endl;
-
 				ptr1 = ptr1->next;
-	}
+		}
 
 	}
 
