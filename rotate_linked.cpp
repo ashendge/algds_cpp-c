@@ -35,7 +35,7 @@ void add_node(Node **head_ref, int value){
 	new_node->value = value;
 	new_node->next = *head_ref;
 	*head_ref = new_node;
-
+	
 }
 
 void print(Node *head){
@@ -65,7 +65,7 @@ void rotate(Node **head_ref, int k){
 		while(temp->next!=NULL)
 			temp = temp->next;
 				
-		// Link the pointers
+		// Link	 the pointers
 		
 		temp->next = *head_ref;
 		*head_ref = rotate; 
