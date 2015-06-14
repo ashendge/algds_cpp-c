@@ -1,5 +1,4 @@
 #include <iostream>
-
 using namespace std;
 
 void merge_sort(int [], int ,int );
@@ -13,9 +12,6 @@ int main(){
 	printArray(arr, size);
 	merge_sort(arr,0,size-1);
 	printArray(arr, size);
-
-
-
 
 }
 void printArray(int arr[], int size){
