@@ -24,13 +24,13 @@ int main(){
     add_node (&headB, 6);
  	add_node (&headB, 12);
 
-    add_node (&headA, 8);
-    add_node (&headA, 5);
-    add_node (&headA, 23);
+    add_node (&headC, 8);
+    add_node (&headC, 5);
+    add_node (&headC, 23);
 
-    add_node (&headC, 59);
-    add_node (&headC, 20);
-    add_node (&headC, 90);
+    add_node (&headA, 59);
+    add_node (&headA, 20);
+    add_node (&headA, 90);
  
     /*create a sorted linked list 'b' 2->4->9->10 */
     
@@ -161,24 +161,22 @@ void find_triplet(Node *a, Node *b, Node *c, int num){
 		
 		Node *b_prop = bHead;
 		Node *c_prop = cHead;
-//		print(b_prop);
-	//	print(c_prop);
 
 		while(b_prop && c_prop){
 			
 			int sum = aHead->value + b_prop->value + c_prop->value;
-				//cout<<sum<<endl;
-			//	cout<<"First="<<aHead->value<<" Second="<<bHead->value<<" Third="<<cHead->value<<endl;
 		
 			if(sum == num ){
-				cout<<"THe triplet is found\n"<<"First="<<aHead->value<<" Second="<<bHead->value<<" Third="<<cHead->value<<endl;
+
+				cout<<"THe triplet is found\n"<<"First="<<aHead->value<<" Second="<<b_prop->value<<" Third="<<c_prop->value<<endl;
 				return;
 			}
 
-			else if(sum < num)
+		else if(sum < num)
 				b_prop = b_prop->next;
-			else if(sum > num)
-				c_prop = c_prop->next;	
+			
+				else 
+					c_prop = c_prop->next;	
 
 		}
 		
