@@ -90,7 +90,7 @@ void add_sorted(Node **head_ref, int newVal){
 		if(temp == *head_ref){
 				new_node->next = temp;
 				prev->next = new_node;
-				cout<<"Test "<<(new_node->next)->value<<endl;
+				
 			}
 
 	}
