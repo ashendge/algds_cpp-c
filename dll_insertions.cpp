@@ -10,7 +10,7 @@ struct Node{
 void add_node(Node **, int );
 void print(Node *);
 void add_middle(Node *,int );
-void before_add(Node *, int );
+void before_add(Node *, int ); // Add at the front ??? How to preserve head reference
 int main(){
 
 	Node *head = NULL;
@@ -19,8 +19,11 @@ int main(){
 	add_node(&head,66);
 	add_node(&head,55);
 	print(head);
-//	add_middle(head->next->next,88);
+
+	//add_middle(head->next->next,88);
+
 	before_add(head,120);
+	head = head->prev;
 	print(head);
 }
 void add_node(Node **head_ref, int value){
