@@ -43,7 +43,7 @@ void print(Node *head){
 		temp = temp->next;
 	}
 	cout<<endl;
-}
+	}
 void reverse(Node **head_ref){
 
 	Node *current = *head_ref, *temp;
