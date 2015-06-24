@@ -7,6 +7,12 @@ void quick_sort(int [], int , int);
 void swap(int *,  int *);
 void print(int a[], int n);
 
+/*This is the array version of the Quick sort
+  Please pay attention to the swap function
+  The addresses should not be swapped but the valued
+  although it should be passed by reference.
+*/
+
 int main(){
 
 	int arr[] ={1,9,2,8,3,7};
