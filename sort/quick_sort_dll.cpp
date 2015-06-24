@@ -82,7 +82,7 @@ void _quick_sort(Node *first, Node *last){
 	}
 }
 /*Wraper function just to ensure that last element can be sent as
-  argument to _quick_sort(Node *first, Node *last)
+  argument to _quick_sort(Node *first, Node *last)	
 */
 void quick_sort(Node *head_ref){	
 
