@@ -46,7 +46,8 @@ bool is_valid_expression(string str){
 			push(&temp_stack,str[i]);
 		else{
 			if(str[i] == ')'){
-				//cout<<"Popped="<<
+				if(isEmpty(&temp_stack))
+					return false;
 				pop(&temp_stack);
 			}
 			
@@ -61,7 +62,6 @@ bool is_valid_expression(string str){
 		return true;
 	}
 	else{
-		cout<<"Invalid"<<endl;
 		return false;
 	}
 }
@@ -87,15 +87,23 @@ int precedence(char ch){
 	return -1;
 }
 string infix_to_postfix(string expr){
+	
+/*function to check if the provided expr is valid or not*/
 	if(!is_valid_expression(expr)){
-		//cout<<"Warning!! Invalid expression";
+		cout<<"Warning!! Invalid expression"<<endl;
 		return "";
 	}
 
 	Node *stack=NULL;
 
 	int k=-1;
-
+/*The loop running over expr to check the character is one of the three types:
+  1.'(' 
+  2 ')'
+  or operand or operator
+  They are handled accordingly	
+ Keep an eye out for precendence utility function.	
+****************************************************************************/
 	for(int i=0;i<expr.size();i++){
 		//cout<<"Input="<<expr[i]<<endl;
 
@@ -137,11 +145,13 @@ string infix_to_postfix(string expr){
 
 int main(){
 
-	string expr = "(a+b)+c";
+	string expr = "a+b*(c^d-e)^(f+g*h)-i";
 	string output = infix_to_postfix(expr);
 	int i=0;
+	if(output!=""){
 	while(output[i]!='\0')
 		cout<<output[i++];
 	cout<<endl;
+}
 
 }		
