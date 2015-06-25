@@ -1,3 +1,10 @@
+
+/*
+Link to the problem:
+
+https://www.hackerearth.com/problem/algorithm/biased-chandan/description/
+
+*/
 #include <iostream>
 #include <stack>
  using namespace std;
