@@ -20,7 +20,6 @@ bool isEmpty(Node **top_ref){
 	return false;
 }
 int pop(Node **top_ref){
-
 	if(isEmpty(top_ref)){
 		cout<<"Stack Empty, nothing to pop"<<endl;
 		return EMPTY_VALUE;
@@ -57,4 +56,4 @@ int main(){
 
 
 	return 1;
-}	
+}

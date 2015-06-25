@@ -34,14 +34,14 @@ char peek(Node **top_ref){
 }
 
 bool is_valid_expression(string str){
-	/*This function still has bugs in the sense that it can only 
+	/*This function still has bugs in the sense that it can only
 		detect the cases where a parantehsisi is not closed
 		but cannot detect the cases where suppose 2*(3+)*5
-		This would pass as a valid expression 
+		This would pass as a valid expression
 	*/
 	Node *temp_stack = NULL;
 	for(int i=0;i<str.size();i++){
-		
+
 		if(str[i] == '(')
 			push(&temp_stack,str[i]);
 		else{
@@ -50,9 +50,9 @@ bool is_valid_expression(string str){
 					return false;
 				pop(&temp_stack);
 			}
-			
 
-		}	
+
+		}
 		/*if(!isEmpty(&temp_stack))
 		//cout<<"Stack value= "<<peek(&temp_stack)<<endl;*/
 	}
@@ -74,7 +74,7 @@ bool is_operand(char ch){
 }
 int precedence(char ch){
 
-	switch(ch){	
+	switch(ch){
 	case '+':
 	case '-':
 		return 1;
@@ -82,12 +82,12 @@ int precedence(char ch){
 	case '/':
 		return 2;
 	case '^':
-		return 3;		
+		return 3;
 	}
 	return -1;
 }
 string infix_to_postfix(string expr){
-	
+
 /*function to check if the provided expr is valid or not*/
 	if(!is_valid_expression(expr)){
 		cout<<"Warning!! Invalid expression"<<endl;
@@ -98,11 +98,11 @@ string infix_to_postfix(string expr){
 
 	int k=-1;
 /*The loop running over expr to check the character is one of the three types:
-  1.'(' 
+  1.'('
   2 ')'
   or operand or operator
-  They are handled accordingly	
- Keep an eye out for precendence utility function.	
+  They are handled accordingly
+ Keep an eye out for precendence utility function.
 ****************************************************************************/
 	for(int i=0;i<expr.size();i++){
 		//cout<<"Input="<<expr[i]<<endl;
@@ -111,32 +111,32 @@ string infix_to_postfix(string expr){
 			expr[++k] = expr[i];
 			//cout<<expr[k]<<endl;
 		}
-	
+
 		else{
 			if(expr[i] == '(')
 				push(&stack,expr[i]);
-			
+
 			else if(expr[i] == ')'){
 				while(!isEmpty(&stack) && peek(&stack) != '(')
 					expr[++k] = pop(&stack);
 				if(!isEmpty(&stack) && peek(&stack) != '(')
 					return "";
-				else 
+				else
 					pop(&stack); // this one pops '(' --> not required in the output
 			}
 			else{
-					
-					while(!isEmpty(&stack) && precedence(expr[i]) <= precedence(peek(&stack)))	
+
+					while(!isEmpty(&stack) && precedence(expr[i]) <= precedence(peek(&stack)))
 						expr[++k] = pop(&stack);
 					push(&stack, expr[i]);
-				
-			}	
-		} 
+
+			}
+		}
 	}
 	while(!isEmpty(&stack)){
 		expr[++k] = pop(&stack);
 	}
-	
+
 	expr[++k] = '\0';
 	return expr;
 
@@ -145,7 +145,7 @@ string infix_to_postfix(string expr){
 
 int main(){
 
-	string expr = "a+b*(c^d-e)^(f+g*h)-i";
+	string expr = "(a+b)*c/d";
 	string output = infix_to_postfix(expr);
 	int i=0;
 	if(output!=""){
@@ -154,4 +154,4 @@ int main(){
 	cout<<endl;
 }
 
-}		
+}
