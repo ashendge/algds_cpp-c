@@ -5,7 +5,7 @@ using namespace std;
 int calls;
 int calls2 = 0;	
 	
-	int cache[1000] = {-1};
+	int cache[100000] = {-1};
 
 
 int fib(int n){
@@ -24,6 +24,11 @@ int fib_fast(int n){
 	
 	calls2++;
 	
+	if (cache[n] != -1)
+	{
+		return cache[n];
+	}
+
 	cache[n] = fib_fast(n-1) + fib_fast(n-2);
 
 	
